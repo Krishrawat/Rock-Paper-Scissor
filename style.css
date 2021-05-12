@@ -1,0 +1,76 @@
+body {
+  background-image: url("./bg-image.jpg");
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+  font-family: "Ubuntu", sans-serif;
+}
+.name {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  width: 440px;
+  font-weight: bolder;
+  margin: 0 auto;
+  font-size: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0.15rem;
+  animation: typing 3s steps(40, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 440px;
+  }
+}
+
+.keys {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  margin-top: -100px;
+}
+
+.key {
+  background: linear-gradient(rgba(54, 57, 58, 0.836), rgba(45, 50, 51, 0.836));
+  width: 100px;
+  height: 80px;
+  border: 3px solid black;
+  color: yellow;
+  font: 14px "Ubuntu", sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 30px;
+  transition: all, 0.07s;
+}
+
+.key:hover {
+  width: 120px;
+  height: 90px;
+  font-size: 16px;
+  border-color: yellow;
+}
+
+.style-result {
+  color: rgba(72, 163, 216, 0.973);
+  text-align: center;
+  font-weight: bold;
+  width: 500px;
+  margin: 0 auto;
+  border: 3px solid rgba(15, 15, 15, 0.575);
+  border-radius: 10px;
+  background: linear-gradient(rgba(15, 15, 15, 0.575), rgba(39, 34, 34, 0.76));
+}
+
+.choices {
+  display: flex;
+  justify-content: space-around;
+  color: rgba(255, 255, 255, 0.808);
+  margin-top: 50px;
+  font-weight: bold;
+}
