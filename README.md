@@ -3,7 +3,10 @@ This is a simple rock-paper-scissor game where you choose a choice and can play 
 
 Things I learnt in this project:
 
--How DOM works
--DOM Manipulation
--EventListeners
--Some more styling using CSS
+  -How DOM works
+
+  -DOM Manipulation
+
+  -EventListeners
+
+  -Some more styling using CSS
