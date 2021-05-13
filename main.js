@@ -4,31 +4,56 @@
         Scissor:2;
         */
 
+let computerScore = 0;
+let playerScore = 0;
+
 window.addEventListener("click", (e) => {
-  if (
-    e.target.id === "Rock" ||
-    e.target.id === "Paper" ||
-    e.target.id === "Scissor"
-  ) {
-    game(e);
+  if (computerScore < 5 && playerScore < 5) {
+    if (
+      e.target.id === "Rock" ||
+      e.target.id === "Paper" ||
+      e.target.id === "Scissor"
+    ) {
+      let score = game(e);
+      if (!score) {
+        computerScore++;
+      } else if (score === 1) playerScore++;
+      else {
+        playerScore++;
+        computerScore++;
+      }
+      displayScore(playerScore, computerScore);
+    }
+  }
+  if (computerScore === 5 || playerScore === 5) {
+    displayResult(computerScore, playerScore);
   }
 });
 
 const game = (e) => {
   let player = playerSelection(e);
   let computer = computerSelection();
-  let computerScore = 0;
-  let playerScore = 0;
-  let score = computerPlay(player, computer);
-  if (!score) {
-    computerScore++;
-  } else if (score === 1) playerScore++;
-  else {
-    playerScore++;
-    computerScore++;
-  }
+  if (player === 0 && computer === 2) return 1;
 
-  output(computerScore, playerScore);
+  if (player === computer) return 2;
+  else if (player - computer === 1) return 1;
+  else {
+    return 0;
+  }
+};
+
+const displayScore = (playerScore, computerScore) => {
+  const playerDiv = document.querySelector(".humanScore");
+  playerDiv.innerHTML = "";
+  let content = document.createElement("h1");
+  content.textContent = `Score: ${playerScore}`;
+  playerDiv.appendChild(content);
+
+  const machineScore = document.querySelector(".machineScore");
+  machineScore.innerHTML = "";
+  content = document.createElement("h1");
+  content.textContent = `Score: ${computerScore}`;
+  machineScore.appendChild(content);
 };
 
 const playerSelection = (e) => {
@@ -65,17 +90,7 @@ const displayPlayerChoice = (choice) => {
   div.appendChild(content);
 };
 
-const computerPlay = (player, computer) => {
-  if (player === 0 && computer === 2) return 1;
-
-  if (player === computer) return 2;
-  else if (player - computer === 1) return 1;
-  else {
-    return 0;
-  }
-};
-
-const output = (computerScore, playerScore) => {
+const displayResult = (computerScore, playerScore) => {
   const div = document.querySelector(".result");
   div.classList.add("style-result");
   div.innerHTML = "";
